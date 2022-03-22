@@ -1,0 +1,10 @@
+# name: custom-namespace.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-22
+
+# for creating a simple namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: custom-namespace
