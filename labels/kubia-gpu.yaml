@@ -1,0 +1,18 @@
+# name: kubia-gpu.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-22
+
+# this pod has a node selector, hence it will be deployed only on Kubernetes node that has
+# label 'gpu=true'
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-gpu
+spec:
+  nodeSelector:
+    gpu: "true"
+  containers:
+  - image: luksa/kubia
+    name: kubia
