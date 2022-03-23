@@ -1,0 +1,21 @@
+# name: kubia-liveness-probe-initial-delay.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-23
+
+# configuring a delay of 15 sec before liveness probe is started by Kubernetes.
+# Without this delay, liveness probe will be started immediately.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-liveness-probe-initial-delay
+spec:
+  containers:
+  - image: luksa/kubia-unhealthy
+    name: kubia
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 8080
+      initialDelaySeconds: 15
