@@ -1,0 +1,23 @@
+# name: kubia-liveness-probe.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-23
+
+# this pod is to demonstrate liveness probing of a container by Kubernetes.
+# the yaml descriptor is confugured with a liveness probe, for the container,
+# in the http GET request path '/' on the port 8080.
+# The app in the  container is made to return an HTTP 500 server error after the 
+# 5th request and as a result the container gets restarted by Kubernetes.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-liveness
+spec:
+  containers:
+  - image: luksa/kubia-unhealthy
+    name: kubia
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 8080
