@@ -1,0 +1,23 @@
+# name: multi-completion-parallel-batch-job.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-27
+
+# this yaml descriptor creates a 'job'a which runs maximum 2 pod instances in parallel out # of a total 5 completions.
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: multi-completion-parallel-batch-job
+spec:
+  completions: 5
+  parallelism: 2
+  template:
+    metadata:
+      labels:
+        app: batch-job
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: main
+        image: luksa/batch-job
