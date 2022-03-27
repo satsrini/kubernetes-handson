@@ -3,8 +3,8 @@
 # version: 1.0
 # since:   2022-03-27
 
-# this pod has a creates a daemonset. It has a node selector so that pods are created 
-# exactly once in those nodes which match the node selector.
+# this pod creates a daemonset. It has a node selector so that pods are created 
+# exactly once in those nodes which match the node selector label "disk=ssd".
 
 apiVersion: apps/v1
 kind: DaemonSet
