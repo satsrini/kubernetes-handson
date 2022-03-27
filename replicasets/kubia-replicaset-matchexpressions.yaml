@@ -1,0 +1,28 @@
+# name: kubia-replicaset-matchexpressions.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-27
+
+# replicaset example with advanced label selector.
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: kubia-adv
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: luksa/kubia
+
