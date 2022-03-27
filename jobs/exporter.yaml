@@ -1,0 +1,21 @@
+# name: exporter.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-27
+
+# this yaml descriptor creates a 'job'
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: batch-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: batch-job
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: main
+        image: luksa/batch-job
