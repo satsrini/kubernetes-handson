@@ -1,0 +1,26 @@
+# name: ssd-monitor-daemonset.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-03-27
+
+# this pod has a creates a daemonset. It has a node selector so that pods are created 
+# exactly once in those nodes which match the node selector.
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ssd-monitor
+spec:
+  selector:
+    matchLabels:
+      app: ssd-monitor
+  template:
+    metadata:
+      labels:
+        app: ssd-monitor
+    spec:
+      nodeSelector:
+        disk: ssd
+      containers:
+      - name: main
+        image: luksa/ssd-monitor
