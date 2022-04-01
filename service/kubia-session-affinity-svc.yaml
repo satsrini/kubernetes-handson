@@ -1,0 +1,20 @@
+# name: kubia-session-affinity-svc.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-01
+
+# a yaml descriptor to create a simple service with 'ClientIP session affinity'.
+# This 'ClientIP session affinity' makes sure that all calls from the same
+# client IP go to the same pod through this service IP address
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-session-affinity
+spec:
+  sessionAffinity: ClientIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: kubia
