@@ -1,0 +1,20 @@
+# name: kubia-namedport-svc.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-03
+
+# a yaml descriptor to create a simple service with named ports.
+# Port 80 mapped to internal port 80 named as 'http'
+# Please check kubia-namedport-pod.yaml for pod created with named internal port 'http'
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-named-port
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: named-port-kubia

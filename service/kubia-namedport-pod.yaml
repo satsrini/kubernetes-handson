@@ -1,0 +1,23 @@
+# name: kubia-namedport-pod.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-03
+
+# yaml descriptor to create a simple pod with named port for container port 8080.
+# This port, 8080, is named as 'http'.
+# This named port is used by the svc creeated using 'kubia-namedport-svc.yaml'
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-named-port
+  labels:
+    app: named-port-kubia
+spec:
+  containers:
+  - image: luksa/kubia
+    name: kubia-named-port
+    ports:
+    - name: http
+      containerPort: 8080
+
