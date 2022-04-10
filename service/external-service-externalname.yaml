@@ -1,0 +1,21 @@
+# name: external-service-externalname.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-10
+
+# a yaml descriptor to create a service that points to an external FQDN(Fully Qualified
+# Domain Name). In later stages, even if the external FQDN is changed, in this service,
+# also, the pods hitting this service, created by this yaml descriptor, can continue 
+# without any change.
+# Please note that, here 'type' is set as 'ExternalName' and this service acts as an alias
+# for the actual external service/FQDN.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+spec:
+  type: ExternalName
+  externalName: someapi.somecompany.com
+  ports:
+  - port: 80
