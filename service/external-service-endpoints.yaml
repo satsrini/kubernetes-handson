@@ -1,0 +1,21 @@
+# name: external-service-endpoints
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-10
+
+# a yaml descriptor to manually create external endpoints.
+# Please refer external-service.yaml for corresponding service without selector.
+# Here, the name of external endpoint "external-service" matches that of the external
+# service. Thus pods hits on the service created by 'external-service.yaml', on the port 
+# 80 will hit one of 11.11.11.11:80 or 22.22.22.22:80 as part of load balancing.
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-service
+subsets:
+  - addresses:
+    - ip: 11.11.11.11
+    - ip: 22.22.22.22
+    ports:
+    - port: 80

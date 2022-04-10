@@ -1,0 +1,18 @@
+# name: external-service.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-05
+
+# a yaml descriptor to create a service without selector.
+# This is for creating a service and manually configuring external endpoints to it.
+# Please refer external-service-endpoints.yaml for creating external endpoints manually.
+# Here, pods hitting the service created by this yaml descriptor, on port 80, will be 
+# hitting the endpoints defined in "external-service-endpoints.yaml" in a load-balanced way
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+spec:
+  ports:
+  - port: 80
