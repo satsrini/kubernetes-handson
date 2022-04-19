@@ -5,8 +5,9 @@
 
 # this yaml descriptor creates a kubernetes service of type NodePort. This service is exposed through the port 80 
 # when accessed through internal Cluster IP (which can be accessed only internally from inside the kubernetes cluster#)
-# And also each node exposes this service through the port 30123(which is called nodePort). Through this 
-# NodeIp:nodePort combination, this service can be accessed by external clients also(ofcourse, firewall for the port # 30123 must be opened for Ingress traffic into each of these Kubernetes Nodes)
+# And also each node exposes this service through the port 30123(which is called NodePort). Through this 
+# NodeIp:nodePort combination, this service can be accessed by external clients also(ofcourse, firewall for the port
+# 30123 must be opened for Ingress traffic into each of these Kubernetes Nodes)
 # Note: But, accessing this service externally using the above mentioned approach has a problem since if the 
 # particular node, which is being used to access the service goes down, then this service becomes inaccessible for
 # the external client. To solve this problem, we need to create Kubernetes Service of type LoadBalancer which can 
