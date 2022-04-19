@@ -8,9 +8,9 @@
 # And also each node exposes this service through the port 30123(which is called NodePort). Through this 
 # NodeIp:nodePort combination, this service can be accessed by external clients also(ofcourse, firewall for the port
 # 30123 must be opened for Ingress traffic into each of these Kubernetes Nodes)
-# Note: But, accessing this service externally using the above mentioned approach has a problem since if the 
-# particular node, which is being used to access the service goes down, then this service becomes inaccessible for
-# the external client. To solve this problem, we need to create Kubernetes Service of type LoadBalancer which can 
+# Note: Please note that accessing this service externally using the above mentioned approach has a problem since if
+# the particular node, which is being used to access the service, goes down, then this service becomes inaccessible 
+# for the external client. To solve this problem, we need to create Kubernetes Service of type LoadBalancer which can
 # redirect to an alternate/active node if a particular node fails/goes down.
 
 apiVersion: v1
