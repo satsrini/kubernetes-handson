@@ -1,0 +1,26 @@
+# name: kubia-svc-loadbalancer.yaml
+# author:  Satish Srinivasan
+# version: 1.0
+# since:   2022-04-22
+
+# This yaml descriptor creates a Kubernetes service of type 'Loadbalancer' with external IP address on port 80.
+# This 'LoadBalancer' targets pods with label 'app:kubia' and running on internal port 8080.
+# Please note that this 'LoadBalancer' is a 'NodePort'. All external hits on external service IP address 
+# over port inturn hits a Kubernetes Node IP address on it's NodePort IP address. Here in this yaml descriptor
+# since we did not assign a NodePort, kubernetes cluster randomly assigns a Node Port(eg 32374) to the
+# LoadBalancer service being created. 
+# http://<external-svc-ip>:80 hits http://<randomly selected kubernetes node ip address:32374> which inturn 
+# hits http://<internal cluster IP address of the svc>:80 which inturn hits 
+# http://<randomly selected pod IP address>:8080
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-loadbalancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: kubia
