@@ -12,6 +12,8 @@
 # the particular kubernetes node, which is being used to access the service, goes down, then this service becomes 
 # inaccessible for the external client. To solve this problem, we need to create Kubernetes Service of type 
 # LoadBalancer which can redirect to an alternate/active node if a particular node fails/goes down.
+#
+# Please note that this service targets pods with label 'app:kubia' running on internal port 8080.
 
 apiVersion: v1
 kind: Service
